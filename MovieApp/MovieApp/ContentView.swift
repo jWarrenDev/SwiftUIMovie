@@ -10,6 +10,8 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         Text("Hello, Jerrick, Lets get Started")
+            .foregroundColor(.blue)
+            .bold()
     }
 }
 
