@@ -9,7 +9,7 @@ import Foundation
 
 enum MovieError: Error, CustomNSError {
     case apiError
-    case invalidEndpoints
+    case invalidEndpoint
     case invalidRepsonse
     case noData
     case serializationError
@@ -20,7 +20,7 @@ enum MovieError: Error, CustomNSError {
             return "Error with the Api and fetching Data"
         case .invalidRepsonse:
             return "Invalid response"
-        case .invalidEndpoints:
+        case .invalidEndpoint:
             return "Invalid Endpoint"
         case .noData:
             return "No data was returned"
