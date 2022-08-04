@@ -8,7 +8,7 @@
 import Foundation
 
 class MovieStore: MovieService {
-    
+
     static let shared = MovieStore()
     private init() {}
     
@@ -17,22 +17,39 @@ class MovieStore: MovieService {
     private let urlSession = URLSession.shared
     private let jsonDecoder = Utils.jsonDecoder
     
-    func fetchMovie(id: Int, completion: @escaping (Result<Movie, MovieError>) -> ()) {
-        // check it the url exist, need a guard satement
-        
-        guard let url = URL(string: "\(baseAPIUrl)/movie/\(endpoint.rawValue)" else {completion(.failure(.invalidEndpoint))
+    func fetchMovies(from endpoint: MovieListEndpoint, completion: @escaping (Result<MovieResponse, MovieError>) -> ()) {
+        guard let url = URL(string: "\(baseAPIUrl)/movie/\(endpoint.rawValue)") else {
+            completion(.failure(.invalidEndpoint))
             return
         }
-       // TODO: ADD the LoadURLandDECODE method here
+        self.loadURLandDecode(url: url, completion: completion)
     }
     
-    func fetchMovies(from endpoint: MovieListEndpoint, completion: @escaping (Result<MovieResponse, MovieError>) -> ()) {
-        <#code#>
+    func fetchMovie(id: Int, completion: @escaping (Result<Movie, MovieError>) -> ()) {
+        guard let url = URL(string: "\(baseAPIUrl)/movie/\(id)") else {
+            completion(.failure(.invalidEndpoint))
+            return
+        }
+        
+        self.loadURLandDecode(url: url, params: [
+            "append_to_response": "videos,credits"
+        ] , completion: completion)
     }
     
     func searchMovie(query: String, completion: @escaping (Result<MovieResponse, MovieError>) -> ()) {
-        <#code#>
+        guard let url = URL(string: "\(baseAPIUrl)/search/movie") else {
+            completion(.failure(.invalidEndpoint))
+            return
+        }
+        self.loadURLandDecode(url: url, params: [
+            "language" : "en-US",
+            "include_adult" : "true",
+            "region": "US",
+            "query": query
+            ],completion: completion)
     }
+    
+  
                             
     // helper function to make sure that the the url is loaded and decoded
     // the params are going to take a dictionary
@@ -84,6 +101,7 @@ class MovieStore: MovieService {
                 do {
                     let decodedResponse = try self.jsonDecoder.decode(D.self, from: data)
                     self.completeOnMainThread(with: .success(decodedResponse), completion: completion)
+                    print(decodedResponse)
                 } catch {
                     self.completeOnMainThread(with: .failure(.serializationError), completion: completion)
                 }
