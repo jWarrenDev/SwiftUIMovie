@@ -23,7 +23,13 @@ struct MovieBackdropCard: View {
                     .resizable()
                 }
             }
+            .aspectRatio(16/9, contentMode: .fit)
+            .cornerRadius(8)
+            .shadow(radius: 4)
             Text(movie.title)
+        }
+        .onAppear {
+            self.imageLoader.loadImage(with: self.movie.backdropURL)
         }
     }
 }
