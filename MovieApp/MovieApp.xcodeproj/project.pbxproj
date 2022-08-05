@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		47644A8A289CBDFF005CD0E1 /* MovieBackdropCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47644A89289CBDFF005CD0E1 /* MovieBackdropCarouselView.swift */; };
 		47CD068028971A1E00F8B196 /* MovieStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CD067F28971A1E00F8B196 /* MovieStore.swift */; };
 		47CD0682289724B100F8B196 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CD0681289724B100F8B196 /* Utils.swift */; };
 		47D4322728944B4300F3293D /* MovieApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D4322628944B4300F3293D /* MovieApp.swift */; };
@@ -47,6 +48,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		47644A89289CBDFF005CD0E1 /* MovieBackdropCarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieBackdropCarouselView.swift; sourceTree = "<group>"; };
 		47CD067F28971A1E00F8B196 /* MovieStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieStore.swift; sourceTree = "<group>"; };
 		47CD0681289724B100F8B196 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		47D4322328944B4300F3293D /* MovieApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -194,6 +196,7 @@
 			isa = PBXGroup;
 			children = (
 				47D57567289C5AC800B248B6 /* MovieBackdropCard.swift */,
+				47644A89289CBDFF005CD0E1 /* MovieBackdropCarouselView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -344,6 +347,7 @@
 				47D5756B289C5F7D00B248B6 /* ImageLoader.swift in Sources */,
 				47CD0682289724B100F8B196 /* Utils.swift in Sources */,
 				47D4325628944C8300F3293D /* ContentView.swift in Sources */,
+				47644A8A289CBDFF005CD0E1 /* MovieBackdropCarouselView.swift in Sources */,
 				47D432592894792900F3293D /* Movie.swift in Sources */,
 				47D4322928944B4300F3293D /* DataContentView.swift in Sources */,
 				47D4323328944B4500F3293D /* MovieApp.xcdatamodeld in Sources */,
