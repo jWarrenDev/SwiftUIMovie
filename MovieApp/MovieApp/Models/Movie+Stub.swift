@@ -9,6 +9,9 @@ import Foundation
 
 extension Movie {
     
+    // this is kinda cool to be creating your own stub and load from there until you get the API work for you.
+    // I llike this approach a lot better.
+    
     static var stubbedMovies: [Movie] {
         let response: MovieResponse? = try? Bundle.main.loadAndDecodeJSON(filename: "movie_list")
         return response!.results
