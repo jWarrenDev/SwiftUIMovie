@@ -95,6 +95,7 @@ class MovieStore: MovieService {
                 // Data
                 guard let data = data else {
                     self.completeOnMainThread(with: .failure(.noData), completion: completion)
+                    print(data)
                     return
                 }
                 

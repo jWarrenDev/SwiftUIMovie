@@ -11,9 +11,28 @@ struct MovieListView: View {
     
     // add observedObjects
     @ObservedObject private var nowPlayingState = MovieListState()
+    @ObservedObject private var upcomingState = MovieListState()
+    @ObservedObject private var topRatedState = MovieListState()
+    @ObservedObject private var popularState = MovieListState()
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            List {
+                Group {
+                    if nowPlayingState.movies != nil {
+                        MoviePosterCarouselView(title: "Now Playing", movies: nowPlayingState.movies!)
+                    } else {
+                        LoadingView(isLoading: self.nowPlayingState.isLoading, error: self.nowPlayingState.error) {
+                            self.nowPlayingState.loadMovies(with: .nowPlaying)
+                        }
+                    }
+                }
+            }
+            .navigationTitle("SwitUI Movies")
+        }
+        .onAppear {
+            self.nowPlayingState.loadMovies(with: .nowPlaying)
+        }
     }
 }
 
