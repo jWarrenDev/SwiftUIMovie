@@ -27,11 +27,48 @@ struct MovieListView: View {
                         }
                     }
                 }
+                .listRowInsets(EdgeInsets(top: 16, leading: 0, bottom: 16, trailing: 0))
+                
+                Group {
+                    if upcomingState.movies != nil {
+                        MovieBackdropCarouselView(title: "Upcoming", movies: upcomingState.movies!)
+                    } else {
+                        LoadingView(isLoading: self.upcomingState.isLoading, error: self.upcomingState.error) {
+                            self.upcomingState.loadMovies(with: .upcoming)
+                        }
+                    }
+                }
+                .listRowInsets(EdgeInsets(top: 16, leading: 0, bottom: 16, trailing: 0))
+                
+                Group {
+                    if topRatedState.movies != nil {
+                        MovieBackdropCarouselView(title: "Top Rated", movies: topRatedState.movies!)
+                    } else {
+                        LoadingView(isLoading: self.topRatedState.isLoading, error: self.topRatedState.error) {
+                            self.topRatedState.loadMovies(with: .topRated)
+                        }
+                    }
+                }
+                .listRowInsets(EdgeInsets(top: 16, leading: 0, bottom: 16, trailing: 0))
+                
+                Group {
+                    if popularState.movies != nil {
+                        MovieBackdropCarouselView(title: "Popular", movies: popularState.movies!)
+                    } else {
+                        LoadingView(isLoading: self.popularState.isLoading, error: self.popularState.error) {
+                            self.popularState.loadMovies(with: .popular)
+                        }
+                    }
+                }
+                .listRowInsets(EdgeInsets(top: 16, leading: 0, bottom: 16, trailing: 0))
             }
-            .navigationTitle("SwitUI Movies")
+            .navigationTitle("SwitfUI Movies")
         }
         .onAppear {
             self.nowPlayingState.loadMovies(with: .nowPlaying)
+            self.upcomingState.loadMovies(with: .upcoming)
+            self.topRatedState.loadMovies(with: .topRated)
+            self.popularState.loadMovies(with: .popular)
         }
     }
 }
