@@ -28,6 +28,7 @@ struct MovieListView: View {
                     }
                 }
                 .listRowInsets(EdgeInsets(top: 16, leading: 0, bottom: 16, trailing: 0))
+                .listRowSeparator(.hidden)
                 
                 Group {
                     if upcomingState.movies != nil {
@@ -39,6 +40,7 @@ struct MovieListView: View {
                     }
                 }
                 .listRowInsets(EdgeInsets(top: 16, leading: 0, bottom: 16, trailing: 0))
+                .listRowSeparator(.hidden)
                 
                 Group {
                     if topRatedState.movies != nil {
@@ -50,6 +52,7 @@ struct MovieListView: View {
                     }
                 }
                 .listRowInsets(EdgeInsets(top: 16, leading: 0, bottom: 16, trailing: 0))
+                .listRowSeparator(.hidden)
                 
                 Group {
                     if popularState.movies != nil {
@@ -61,8 +64,9 @@ struct MovieListView: View {
                     }
                 }
                 .listRowInsets(EdgeInsets(top: 16, leading: 0, bottom: 16, trailing: 0))
+                .listRowSeparator(.hidden)
             }
-            .navigationTitle("SwitfUI Movies")
+            .navigationTitle("SwiftUI Movies")
         }
         .onAppear {
             self.nowPlayingState.loadMovies(with: .nowPlaying)
@@ -70,7 +74,9 @@ struct MovieListView: View {
             self.topRatedState.loadMovies(with: .topRated)
             self.popularState.loadMovies(with: .popular)
         }
+        .listStyle(.plain)
     }
+    
 }
 
 struct MovieListView_Previews: PreviewProvider {
