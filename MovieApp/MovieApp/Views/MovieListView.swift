@@ -63,7 +63,7 @@ struct MovieListView: View {
                         }
                     }
                 }
-                .listRowInsets(EdgeInsets(top: 16, leading: 0, bottom: 16, trailing: 0))
+                .listRowInsets(EdgeInsets(top: 8, leading: 0, bottom: 16, trailing: 0))
                 .listRowSeparator(.hidden)
             }
             .navigationTitle("SwiftUI Movies")
