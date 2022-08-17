@@ -17,10 +17,19 @@ struct MovieDetailView: View {
             LoadingView(isLoading: self.movieDetailState.isLoading, error: self.movieDetailState.error) {
                 self.movieDetailState.loadMovie(id: self.movieId)
             }
-            VStack {
-                MovieDetailListView()
-                MovieDetailImage()
+            
+            if movieDetailState.movie != nil {
+                MovieDetailListView(movie: self.movieDetailState.movie!)
+                    .listStyle(.plain)
+                
+                
             }
+                
+                
+//            VStack {
+//                MovieDetailListView(movie: self.movieDetailState.movie!)
+//                MovieDetailImage()
+//            }
         }
         .navigationTitle(movieDetailState.movie?.title ?? "")
         .onAppear {
@@ -33,10 +42,17 @@ struct MovieDetailView: View {
 
 struct MovieDetailListView: View {
     
-   // let movie: Movie
+    let movie: Movie
+    let imageLoader = ImageLoader()
     
     var body: some View {
-        Text("hello")
+        List {
+            MovieDetailImage(imageLoader: imageLoader, imageURL: self.movie.backdropURL)
+                .listRowSeparator(.hidden)
+                
+        }
+        
+        
     }
 }
 
@@ -45,10 +61,23 @@ struct MovieDetailListView: View {
 
 struct MovieDetailImage: View {
     
+    @ObservedObject var imageLoader = ImageLoader()
+    let imageURL: URL
+    
     var body: some View {
         ZStack {
-            Rectangle().frame(width: 200, height: 200)
-                .foregroundColor(Color.gray)
+           // Rectangle().frame(width: 200, height: 200)
+           //     .foregroundColor(Color.gray)
+            
+            Rectangle().fill(Color.gray.opacity(0.3))
+            if self.imageLoader.image != nil {
+                Image(uiImage: self.imageLoader.image!)
+                    .resizable()
+            }
+        }
+        .aspectRatio(16/9, contentMode: .fit)
+        .onAppear {
+            self.imageLoader.loadImage(with: self.imageURL)
         }
     }
 }
