@@ -95,14 +95,14 @@ class MovieStore: MovieService {
                 // Data
                 guard let data = data else {
                     self.completeOnMainThread(with: .failure(.noData), completion: completion)
-                    print(data)
+                  //  print(data)
                     return
                 }
                 
                 do {
                     let decodedResponse = try self.jsonDecoder.decode(D.self, from: data)
                     self.completeOnMainThread(with: .success(decodedResponse), completion: completion)
-                    print(decodedResponse)
+                   //  print(decodedResponse)
                 } catch {
                     self.completeOnMainThread(with: .failure(.serializationError), completion: completion)
                 }
