@@ -50,6 +50,12 @@ struct MovieDetailListView: View {
             MovieDetailImage(imageLoader: imageLoader, imageURL: self.movie.backdropURL)
                 .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
                 .listRowSeparator(.hidden)
+            
+            HStack {
+                Text(movie.genreText)
+                Text(movie.overview)
+                Text(movie.ratingText)
+            }
                 
         }
         
