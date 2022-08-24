@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4708AD8E289EE7210031343C /* MoviePostercard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4708AD8D289EE7210031343C /* MoviePostercard.swift */; };
 		4708AD90289EEF100031343C /* MoviePosterCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4708AD8F289EEF100031343C /* MoviePosterCarouselView.swift */; };
+		4754A71828B620A700B84914 /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4754A71728B620A700B84914 /* SafariView.swift */; };
 		47644A8A289CBDFF005CD0E1 /* MovieBackdropCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47644A89289CBDFF005CD0E1 /* MovieBackdropCarouselView.swift */; };
 		476E629628A4A0DC00F8717B /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476E629528A4A0DC00F8717B /* ActivityIndicatorView.swift */; };
 		478C487928A187E3003896BC /* MovieListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478C487828A187E3003896BC /* MovieListView.swift */; };
@@ -58,6 +59,7 @@
 /* Begin PBXFileReference section */
 		4708AD8D289EE7210031343C /* MoviePostercard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviePostercard.swift; sourceTree = "<group>"; };
 		4708AD8F289EEF100031343C /* MoviePosterCarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviePosterCarouselView.swift; sourceTree = "<group>"; };
+		4754A71728B620A700B84914 /* SafariView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariView.swift; sourceTree = "<group>"; };
 		47644A89289CBDFF005CD0E1 /* MovieBackdropCarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieBackdropCarouselView.swift; sourceTree = "<group>"; };
 		476E629528A4A0DC00F8717B /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
 		478C487828A187E3003896BC /* MovieListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListView.swift; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				476E629528A4A0DC00F8717B /* ActivityIndicatorView.swift */,
+				4754A71728B620A700B84914 /* SafariView.swift */,
 			);
 			path = UIKitViews;
 			sourceTree = "<group>";
@@ -388,6 +391,7 @@
 				47D4322928944B4300F3293D /* DataContentView.swift in Sources */,
 				47D4323328944B4500F3293D /* MovieApp.xcdatamodeld in Sources */,
 				4708AD90289EEF100031343C /* MoviePosterCarouselView.swift in Sources */,
+				4754A71828B620A700B84914 /* SafariView.swift in Sources */,
 				47D4322728944B4300F3293D /* MovieApp.swift in Sources */,
 				478C487B28A18875003896BC /* MovieListState.swift in Sources */,
 				47EDD64D28AB1C4300481972 /* MovieDetailState.swift in Sources */,

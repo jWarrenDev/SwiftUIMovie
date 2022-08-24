@@ -22,8 +22,13 @@ struct MovieBackdropCarouselView: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(alignment: .top, spacing: 16) {
                     ForEach(self.movies) { movie in
-                        MovieBackdropCard(movie: movie)
-                            .frame(width: 272)
+                        
+                        NavigationLink(destination: MovieDetailView(movieId: movie.id)) {
+                            MovieBackdropCard(movie: movie)
+                                .frame(width: 272)
+                            
+                        }
+                        .buttonStyle(PlainButtonStyle())
                             .padding(.leading, movie.id == self.movies.first!.id ? 16 : 0)
                             .padding(.leading, movie.id == self.movies.last!.id ? 16 : 0)
                     }
