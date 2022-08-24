@@ -21,15 +21,7 @@ struct MovieDetailView: View {
             if movieDetailState.movie != nil {
                 MovieDetailListView(movie: self.movieDetailState.movie!)
                     .listStyle(.plain)
-                
-                
             }
-            
-            
-            //            VStack {
-            //                MovieDetailListView(movie: self.movieDetailState.movie!)
-            //                MovieDetailImage()
-            //            }
         }
         .navigationTitle(movieDetailState.movie?.title ?? "")
         .onAppear {
@@ -37,6 +29,7 @@ struct MovieDetailView: View {
         }
     }
 }
+
 
 // Create the MovieDetailList View
 
@@ -138,7 +131,6 @@ struct MovieDetailListView: View {
                             Spacer()
                             Image(systemName: "play.circle.fill")
                                 .foregroundColor(.blue)
-                            
                         }
                     }
                 }
@@ -149,10 +141,9 @@ struct MovieDetailListView: View {
         .sheet(item: self.$selectedTrailer) { trailer in
             SafariView(url: trailer.youtubeURL!)
         }
-        
-        
     }
 }
+
 
 // Create the image MovieDetailImage
 // this is going to pass the image into the view. **TODO: gotta learn Async after this.. I dont think this is the right way to go about it.
