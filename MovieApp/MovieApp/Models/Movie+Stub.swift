@@ -11,6 +11,7 @@ extension Movie {
     
     // this is kinda cool to be creating your own stub and load from there until you get the API work for you.
     // I llike this approach a lot better.
+    // Will try to implement this in another app as well
     
     static var stubbedMovies: [Movie] {
         let response: MovieResponse? = try? Bundle.main.loadAndDecodeJSON(filename: "movie_list")
