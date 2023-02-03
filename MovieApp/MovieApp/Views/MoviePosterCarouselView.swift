@@ -35,7 +35,6 @@ struct MoviePosterCarouselView: View {
             }
             
         }
-        
     }
 }
 
