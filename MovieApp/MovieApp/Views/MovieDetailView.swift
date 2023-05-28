@@ -31,7 +31,6 @@ struct MovieDetailView: View {
                         .listStyle(.plain)
                 }
             }
-//            .navigationTitle(movieDetailState.movie?.title ?? "")
             .onAppear {
                 self.movieDetailState.loadMovie(id: self.movieId)
             }
