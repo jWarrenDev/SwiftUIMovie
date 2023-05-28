@@ -13,19 +13,28 @@ struct MovieDetailView: View {
     @ObservedObject private var movieDetailState = MovieDetailState()
     
     var body: some View {
-        ZStack {
-            LoadingView(isLoading: self.movieDetailState.isLoading, error: self.movieDetailState.error) {
+        VStack(alignment: .leading, spacing: 4) {
+            Text(movieDetailState.movie?.title ?? "")
+                .padding(.leading)
+                .navigationBarTitleDisplayMode(.inline)
+                .font(.largeTitle)
+                .bold()
+                
+            
+            ZStack {
+                LoadingView(isLoading: self.movieDetailState.isLoading, error: self.movieDetailState.error) {
+                    self.movieDetailState.loadMovie(id: self.movieId)
+                }
+                
+                if movieDetailState.movie != nil {
+                    MovieDetailListView(movie: self.movieDetailState.movie!)
+                        .listStyle(.plain)
+                }
+            }
+//            .navigationTitle(movieDetailState.movie?.title ?? "")
+            .onAppear {
                 self.movieDetailState.loadMovie(id: self.movieId)
             }
-            
-            if movieDetailState.movie != nil {
-                MovieDetailListView(movie: self.movieDetailState.movie!)
-                    .listStyle(.plain)
-            }
-        }
-        .navigationTitle(movieDetailState.movie?.title ?? "")
-        .onAppear {
-            self.movieDetailState.loadMovie(id: self.movieId)
         }
     }
 }
