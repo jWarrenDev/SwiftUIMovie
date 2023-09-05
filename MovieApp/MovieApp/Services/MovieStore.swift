@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// MovieStore Adheres to MovieService Protocols
 class MovieStore: MovieService {
 
     static let shared = MovieStore()
@@ -19,6 +20,14 @@ class MovieStore: MovieService {
     
     func fetchMovies(from endpoint: MovieListEndpoint, completion: @escaping (Result<MovieResponse, MovieError>) -> ()) {
         guard let url = URL(string: "\(baseAPIUrl)/movie/\(endpoint.rawValue)") else {
+            completion(.failure(.invalidEndpoint))
+            return
+        }
+        self.loadURLandDecode(url: url, completion: completion)
+    }
+    
+    func fetchTrendingMovies(from endpoint: MovieListEndpoint, completion: @escaping (Result<MovieResponse, MovieError>) -> ()) {
+        guard let url = URL(string: "\(baseAPIUrl)/\(endpoint.rawValue)/movie/week?language=en-US") else {
             completion(.failure(.invalidEndpoint))
             return
         }
@@ -49,8 +58,7 @@ class MovieStore: MovieService {
             ],completion: completion)
     }
     
-  
-                            
+
     // helper function to make sure that the the url is loaded and decoded
     // the params are going to take a dictionary
         

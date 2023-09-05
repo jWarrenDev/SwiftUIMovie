@@ -35,4 +35,19 @@ class MovieListState: ObservableObject {
             }
         }
     }
+    
+    func loadTrendingMovies(with endpoint: MovieListEndpoint) {
+        self.movies = nil
+        self.isLoading = true
+        self.movieService.fetchTrendingMovies(from: endpoint) { [weak self] (result) in
+            guard let self = self else { return }
+            self.isLoading = false
+            switch result {
+            case .success(let response):
+                return self.movies = response.results
+            case .failure(let error):
+                return self.error = error as NSError
+            }
+        }
+    }
 }

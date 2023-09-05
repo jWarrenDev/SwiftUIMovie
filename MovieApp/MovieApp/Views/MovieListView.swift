@@ -11,6 +11,7 @@ struct MovieListView: View {
     
     // add observedObjects
     @ObservedObject private var nowPlayingState = MovieListState()
+    @ObservedObject private var trendingState = MovieListState()
     @ObservedObject private var upcomingState = MovieListState()
     @ObservedObject private var topRatedState = MovieListState()
     @ObservedObject private var popularState = MovieListState()
@@ -24,6 +25,18 @@ struct MovieListView: View {
                     } else {
                         LoadingView(isLoading: self.nowPlayingState.isLoading, error: self.nowPlayingState.error) {
                             self.nowPlayingState.loadMovies(with: .nowPlaying)
+                        }
+                    }
+                }
+                .listRowInsets(EdgeInsets(top: 16, leading: 0, bottom: 16, trailing: 0))
+                .listRowSeparator(.hidden)
+                
+                Group {
+                    if trendingState.movies != nil {
+                        MoviePosterCarouselView(title: "Trending", movies: trendingState.movies!)
+                    } else {
+                        LoadingView(isLoading: self.trendingState.isLoading, error: self.trendingState.error) {
+                            self.trendingState.loadMovies(with: .trending)
                         }
                     }
                 }
@@ -70,6 +83,7 @@ struct MovieListView: View {
         }
         .onAppear {
             self.nowPlayingState.loadMovies(with: .nowPlaying)
+            self.trendingState.loadTrendingMovies(with: .trending)
             self.upcomingState.loadMovies(with: .upcoming)
             self.topRatedState.loadMovies(with: .topRated)
             self.popularState.loadMovies(with: .popular)

@@ -35,6 +35,7 @@ enum MovieListEndpoint: String, CaseIterable {
     case upcoming
     case topRated = "top_rated"
     case popular
+    case trending
     
     var description: String {
         switch self {
@@ -44,8 +45,10 @@ enum MovieListEndpoint: String, CaseIterable {
             return "Upcoming"
         case .topRated:
             return "Top Rated"
-        case . popular:
+        case .popular:
             return "Popular"
+        case .trending:
+            return "Trending"
         }
     }
 }
@@ -55,6 +58,8 @@ protocol MovieService {
     
     func fetchMovies(from endpoint: MovieListEndpoint, completion: @escaping (Result<MovieResponse, MovieError>) -> () )
     
+    func fetchTrendingMovies(from endpoint: MovieListEndpoint, completion: @escaping (Result<MovieResponse, MovieError>) -> () )
+
     func fetchMovie(id: Int , completion: @escaping (Result<Movie, MovieError>) -> () )
     
     func searchMovie(query: String, completion: @escaping (Result<MovieResponse, MovieError>) -> () )
